@@ -1,26 +1,1890 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+@theme {
+  --color-maroon: #8B0000;
+  --color-maroon-dark: #4A0404;
+  --color-maroon-light: #A52A2A;
+  --color-gold: #D4AF37;
+  --color-gold-light: #E8D5A3;
+  --color-gold-dark: #B8860B;
+  --color-ivory: #FFFFF0;
+  --color-ivory-dark: #F5F5DC;
+  --color-cream: #FFF8E7;
+  --color-text-dark: #2C1810;
+  --color-text-light: #4A3728;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+* {
+  box-sizing: border-box;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  scroll-behavior: smooth;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: #FFFFF0;
+  color: #2C1810;
+  font-family: 'Lato', Arial, sans-serif;
+  line-height: 1.6;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+/* Utility Classes */
+.font-heading {
+  font-family: 'Playfair Display', Georgia, serif;
+}
+
+.font-body {
+  font-family: 'Lato', Arial, sans-serif;
+}
+
+/* Background Gradient */
+.bg-maroon-gradient {
+  background: linear-gradient(135deg, #4A0404 0%, #8B0000 50%, #4A0404 100%);
+}
+
+.bg-cream-texture {
+  background: #FFF8E7;
+  background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23d4af37' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+}
+
+/* ============================================
+   ORNATE GOLD BORDER FRAMES
+   ============================================ */
+
+.gold-border-frame {
+  border: 4px solid #D4AF37;
+  box-shadow:
+    inset 0 0 0 2px #B8860B,
+    inset 0 0 0 4px rgba(212, 175, 55, 0.3),
+    0 0 0 2px #B8860B,
+    0 8px 32px rgba(139, 0, 0, 0.4);
+  position: relative;
+}
+
+.gold-border-frame::before,
+.gold-border-frame::after {
+  content: '◆';
+  position: absolute;
+  color: #D4AF37;
+  font-size: 1rem;
+  text-shadow: 0 0 4px rgba(212, 175, 55, 0.8);
+}
+
+.gold-border-frame::before {
+  top: -8px;
+  left: -8px;
+}
+
+.gold-border-frame::after {
+  bottom: -8px;
+  right: -8px;
+}
+
+.gold-border-simple {
+  border: 2px solid #D4AF37;
+}
+
+/* Ornate Double Border */
+.ornate-border {
+  position: relative;
+  border: 3px solid #D4AF37;
+}
+
+.ornate-border::before {
+  content: '';
+  position: absolute;
+  inset: 4px;
+  border: 1px solid rgba(212, 175, 55, 0.5);
+  pointer-events: none;
+}
+
+/* ============================================
+   DECORATIVE FLOURISHES
+   ============================================ */
+
+.decorative-flourish {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.decorative-flourish::before,
+.decorative-flourish::after {
+  content: '❧';
+  color: #D4AF37;
+  font-size: 1.5rem;
+}
+
+.decorative-flourish::before {
+  transform: scaleX(-1);
+}
+
+/* Ornate Section Header */
+.section-header {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.section-header::before {
+  content: '✦ ❧ ✦';
+  display: block;
+  color: #D4AF37;
+  font-size: 1.25rem;
+  margin-bottom: 1rem;
+  letter-spacing: 0.5rem;
+}
+
+/* Decorative Divider */
+.decorative-divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  margin: 2rem 0;
+}
+
+.decorative-divider::before,
+.decorative-divider::after {
+  content: '';
+  flex: 1;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #D4AF37, transparent);
+}
+
+.decorative-divider span {
+  color: #D4AF37;
+  font-size: 1.5rem;
+}
+
+/* ============================================
+   PREMIUM BUTTONS
+   ============================================ */
+
+.btn-gold {
+  background: linear-gradient(135deg, #D4AF37 0%, #B8860B 50%, #D4AF37 100%);
+  color: #4A0404;
+  padding: 1rem 2.5rem;
+  font-weight: 700;
+  font-family: 'Lato', sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  border-radius: 4px;
+  transition: all 0.3s ease;
+  box-shadow:
+    0 4px 15px rgba(212, 175, 55, 0.4),
+    inset 0 1px 0 rgba(255, 255, 255, 0.3);
+  border: 2px solid #B8860B;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  text-decoration: none;
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-gold::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+  transition: left 0.5s ease;
+}
+
+.btn-gold:hover::before {
+  left: 100%;
+}
+
+.btn-gold:hover {
+  transform: translateY(-3px);
+  box-shadow:
+    0 8px 25px rgba(212, 175, 55, 0.6),
+    inset 0 1px 0 rgba(255, 255, 255, 0.4);
+}
+
+.btn-maroon {
+  background: linear-gradient(135deg, #8B0000 0%, #4A0404 50%, #8B0000 100%);
+  color: #E8D5A3;
+  padding: 1rem 2.5rem;
+  font-weight: 700;
+  font-family: 'Lato', sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  border-radius: 4px;
+  transition: all 0.3s ease;
+  box-shadow:
+    0 4px 15px rgba(139, 0, 0, 0.4),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  border: 2px solid #D4AF37;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  text-decoration: none;
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-maroon::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(212, 175, 55, 0.2), transparent);
+  transition: left 0.5s ease;
+}
+
+.btn-maroon:hover::before {
+  left: 100%;
+}
+
+.btn-maroon:hover {
+  transform: translateY(-3px);
+  box-shadow:
+    0 8px 25px rgba(139, 0, 0, 0.6),
+    inset 0 1px 0 rgba(255, 255, 255, 0.15);
+}
+
+/* Gold Outline Button */
+.btn-gold-outline {
+  background: transparent;
+  color: #D4AF37;
+  padding: 1rem 2.5rem;
+  font-weight: 700;
+  font-family: 'Lato', sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  border-radius: 4px;
+  transition: all 0.3s ease;
+  border: 2px solid #D4AF37;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  text-decoration: none;
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-gold-outline::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(212, 175, 55, 0.2), transparent);
+  transition: left 0.5s ease;
+}
+
+.btn-gold-outline:hover::before {
+  left: 100%;
+}
+
+.btn-gold-outline:hover {
+  background: rgba(212, 175, 55, 0.15);
+  transform: translateY(-3px);
+  box-shadow: 0 8px 25px rgba(212, 175, 55, 0.3);
+}
+
+/* Button Sparkle Effect */
+.btn-sparkle {
+  position: relative;
+}
+
+.btn-sparkle::after {
+  content: '✨';
+  position: absolute;
+  top: -8px;
+  right: -8px;
+  font-size: 1rem;
+  opacity: 0;
+  transform: scale(0) rotate(-20deg);
+  transition: all 0.3s ease;
+}
+
+.btn-sparkle:hover::after {
+  opacity: 1;
+  transform: scale(1) rotate(0deg);
+}
+
+/* ============================================
+   FLOURISH ANIMATIONS
+   ============================================ */
+
+.flourish-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.flourish-icon {
+  color: #D4AF37;
+  font-size: 1.5rem;
+  animation: floatBob 3s ease-in-out infinite;
+  text-shadow: 0 0 10px rgba(212, 175, 55, 0.5);
+}
+
+.flourish-icon:nth-child(1) {
+  animation-delay: 0s;
+}
+
+.flourish-icon:nth-child(2) {
+  animation-delay: 0.5s;
+  font-size: 2rem;
+}
+
+.flourish-icon:nth-child(3) {
+  animation-delay: 1s;
+}
+
+@keyframes floatBob {
+
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+/* Slow spin animation */
+.animate-spin-slow {
+  animation: spinSlow 8s linear infinite;
+}
+
+@keyframes spinSlow {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* ============================================
+   HERO SECTION PREMIUM STYLES
+   ============================================ */
+
+.hero-section {
+  position: relative;
+}
+
+/* Ornate Heritage Corner Flourishes */
+.hero-corner-decoration {
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  z-index: 20;
+  opacity: 0.5;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath d='M5 5 Q5 50 50 50 Q50 5 95 5' stroke='%23D4AF37' fill='none' stroke-width='1.5'/%3E%3Cpath d='M5 5 L20 5 M5 5 L5 20' stroke='%23D4AF37' fill='none' stroke-width='2'/%3E%3Ccircle cx='5' cy='5' r='3' fill='%23D4AF37'/%3E%3Ccircle cx='50' cy='50' r='2' fill='%23D4AF37'/%3E%3C/svg%3E");
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+.hero-corner-decoration.top-left {
+  top: 80px;
+  left: 20px;
+  transform: rotate(0deg);
+}
+
+.hero-corner-decoration.top-right {
+  top: 80px;
+  right: 20px;
+  transform: rotate(90deg);
+}
+
+.hero-corner-decoration.bottom-left {
+  bottom: 20px;
+  left: 20px;
+  transform: rotate(-90deg);
+}
+
+.hero-corner-decoration.bottom-right {
+  bottom: 20px;
+  right: 20px;
+  transform: rotate(180deg);
+}
+
+/* Inner gold frame - subtle */
+.hero-inner-frame-new {
+  position: absolute;
+  top: 70px;
+  left: 15px;
+  right: 15px;
+  bottom: 15px;
+  border: 1px solid rgba(212, 175, 55, 0.2);
+  pointer-events: none;
+  z-index: 15;
+}
+
+/* Thread wave separator */
+.thread-wave-separator {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 6px;
+  background: repeating-linear-gradient(90deg,
+      transparent 0px,
+      #D4AF37 2px,
+      #D4AF37 6px,
+      transparent 8px,
+      transparent 14px);
+  animation: threadWaveMove 3s linear infinite;
+}
+
+@keyframes threadWaveMove {
+  0% {
+    background-position: 0 0;
+  }
+
+  100% {
+    background-position: 14px 0;
+  }
+}
+
+/* ============================================
+   PRODUCT CARD PREMIUM STYLES
+   ============================================ */
+
+.product-card {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  position: relative;
+  border: 2px solid transparent;
+  transition: all 0.4s ease;
+}
+
+.product-card:hover {
+  border-color: #D4AF37;
+  transform: translateY(-8px);
+}
+
+.product-card .card-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding: 1.5rem;
+}
+
+.product-card .card-content p {
+  flex: 1;
+}
+
+.product-card .card-content .enquire-link {
+  margin-top: auto;
+  padding-top: 1rem;
+}
+
+/* Embroidery stitch effect on hover */
+.product-card::before {
+  content: '';
+  position: absolute;
+  top: -4px;
+  left: 10%;
+  right: 10%;
+  height: 4px;
+  background: repeating-linear-gradient(90deg,
+      transparent 0px,
+      #D4AF37 2px,
+      #D4AF37 6px,
+      transparent 8px,
+      transparent 14px);
+  opacity: 0;
+  transition: all 0.4s ease;
+}
+
+.product-card::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 10%;
+  right: 10%;
+  height: 4px;
+  background: repeating-linear-gradient(90deg,
+      transparent 0px,
+      #D4AF37 2px,
+      #D4AF37 6px,
+      transparent 8px,
+      transparent 14px);
+  opacity: 0;
+  transition: all 0.4s ease;
+}
+
+.product-card:hover::before,
+.product-card:hover::after {
+  opacity: 1;
+  left: 0;
+  right: 0;
+}
+
+/* ============================================
+   HERITAGE CARDS
+   ============================================ */
+
+.heritage-card {
+  background: white;
+  border: 3px solid #D4AF37;
+  border-radius: 8px;
+  overflow: hidden;
+  transition: all 0.4s ease;
+  box-shadow:
+    0 4px 20px rgba(0, 0, 0, 0.1),
+    inset 0 0 0 1px rgba(212, 175, 55, 0.3);
+  position: relative;
+}
+
+.heritage-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, transparent, #D4AF37, transparent);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.heritage-card:hover::before {
+  opacity: 1;
+}
+
+.heritage-card:hover {
+  transform: translateY(-10px);
+  box-shadow:
+    0 20px 50px rgba(139, 0, 0, 0.25),
+    inset 0 0 0 1px rgba(212, 175, 55, 0.5);
+  border-color: #B8860B;
+}
+
+/* ============================================
+   NAVIGATION
+   ============================================ */
+
+.nav-link {
+  color: #E8D5A3;
+  font-family: 'Playfair Display', serif;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  font-size: 0.875rem;
+  padding: 0.5rem 1.25rem;
+  transition: all 0.3s ease;
+  position: relative;
+  text-decoration: none;
+}
+
+.nav-link::before,
+.nav-link::after {
+  content: '';
+  position: absolute;
+  height: 1px;
+  background: #D4AF37;
+  transition: all 0.3s ease;
+  width: 0;
+}
+
+.nav-link::before {
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.nav-link::after {
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.nav-link:hover::before,
+.nav-link:hover::after {
+  width: 60%;
+}
+
+.nav-link:hover {
+  color: #D4AF37;
+  text-shadow: 0 0 10px rgba(212, 175, 55, 0.5);
+}
+
+/* ============================================
+   ORNATE FOOTER
+   ============================================ */
+
+.ornate-footer {
+  position: relative;
+  overflow: hidden;
+}
+
+.ornate-footer::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg,
+      transparent,
+      #D4AF37 20%,
+      #D4AF37 40%,
+      transparent 50%,
+      #D4AF37 60%,
+      #D4AF37 80%,
+      transparent);
+}
+
+.footer-pattern {
+  position: absolute;
+  inset: 0;
+  opacity: 0.05;
+  background-image: url("data:image/svg+xml,%3Csvg width='80' height='80' viewBox='0 0 80 80' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23d4af37' fill-rule='evenodd'%3E%3Cpath d='M0 0h40v40H0V0zm40 40h40v40H40V40zm0-40h2l-2 2V0zm0 4l4-4h2l-6 6V4zm0 4l8-8h2L40 10V8zm0 4L52 0h2L40 14v-2zm0 4L56 0h2L40 18v-2zm0 4L60 0h2L40 22v-2zm0 4L64 0h2L40 26v-2zm0 4L68 0h2L40 30v-2zm0 4L72 0h2L40 34v-2zm0 4L76 0h2L40 38v-2zm0 4L80 0v2L42 40h-2zm4 0L80 4v2L46 40h-2zm4 0L80 8v2L50 40h-2zm4 0l28-28v2L54 40h-2zm4 0l24-24v2L58 40h-2zm4 0l20-20v2L62 40h-2zm4 0l16-16v2L66 40h-2zm4 0l12-12v2L70 40h-2zm4 0l8-8v2l-6 6h-2zm4 0l4-4v2l-2 2h-2z'/%3E%3C/g%3E%3C/svg%3E");
+}
+
+/* ============================================
+   TRUST BADGES
+   ============================================ */
+
+.trust-badge {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 2rem 1.5rem;
+  position: relative;
+}
+
+.trust-badge::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 120px;
+  height: 120px;
+  border: 1px solid rgba(212, 175, 55, 0.2);
+  border-radius: 50%;
+}
+
+.trust-badge-icon {
+  width: 70px;
+  height: 70px;
+  background: linear-gradient(135deg, #D4AF37 0%, #B8860B 100%);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1rem;
+  color: #4A0404;
+  font-size: 1.75rem;
+  box-shadow:
+    0 4px 20px rgba(212, 175, 55, 0.4),
+    inset 0 2px 4px rgba(255, 255, 255, 0.3);
+  position: relative;
+  z-index: 1;
+}
+
+/* ============================================
+   PRODUCT GRID
+   ============================================ */
+
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 2.5rem;
+}
+
+/* ============================================
+   GALLERY GRID
+   ============================================ */
+
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+}
+
+.gallery-item {
+  position: relative;
+  overflow: hidden;
+  border-radius: 8px;
+  border: 3px solid #D4AF37;
+  aspect-ratio: 1;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+}
+
+.gallery-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s ease;
+}
+
+.gallery-item:hover img {
+  transform: scale(1.15);
+}
+
+.gallery-item-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(74, 4, 4, 0.95) 0%, rgba(74, 4, 4, 0.5) 40%, transparent 100%);
+  display: flex;
+  align-items: flex-end;
+  padding: 1.5rem;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.gallery-item:hover .gallery-item-overlay {
+  opacity: 1;
+}
+
+/* ============================================
+   WHATSAPP BUTTON
+   ============================================ */
+
+.whatsapp-float {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  background: linear-gradient(135deg, #25D366, #128C7E);
+  color: white;
+  width: 65px;
+  height: 65px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+  box-shadow:
+    0 4px 20px rgba(37, 211, 102, 0.5),
+    0 0 0 4px rgba(37, 211, 102, 0.2);
+  z-index: 1000;
+  transition: all 0.3s ease;
+  text-decoration: none;
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+
+  0%,
+  100% {
+    box-shadow:
+      0 4px 20px rgba(37, 211, 102, 0.5),
+      0 0 0 4px rgba(37, 211, 102, 0.2);
+  }
+
+  50% {
+    box-shadow:
+      0 4px 20px rgba(37, 211, 102, 0.5),
+      0 0 0 8px rgba(37, 211, 102, 0.1);
+  }
+}
+
+.whatsapp-float:hover {
+  transform: scale(1.1);
+  box-shadow:
+    0 6px 30px rgba(37, 211, 102, 0.6),
+    0 0 0 6px rgba(37, 211, 102, 0.3);
+  animation: none;
+}
+
+/* ============================================
+   TEXT EFFECTS
+   ============================================ */
+
+.text-shadow-gold {
+  text-shadow:
+    2px 2px 4px rgba(0, 0, 0, 0.5),
+    0 0 40px rgba(212, 175, 55, 0.3);
+}
+
+.gold-text-gradient {
+  background: linear-gradient(135deg, #D4AF37, #F5E6A3, #D4AF37);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ============================================
+   HERO ENHANCEMENTS
+   ============================================ */
+
+.hero-overlay {
+  background:
+    radial-gradient(ellipse at center, transparent 0%, rgba(74, 4, 4, 0.4) 70%),
+    linear-gradient(to bottom, rgba(74, 4, 4, 0.6) 0%, rgba(139, 0, 0, 0.4) 50%, rgba(74, 4, 4, 0.8) 100%);
+}
+
+.hero-inner-frame {
+  position: absolute;
+  inset: 3rem;
+  border: 2px solid rgba(212, 175, 55, 0.4);
+  pointer-events: none;
+}
+
+.hero-inner-frame::before,
+.hero-inner-frame::after {
+  content: '◆';
+  position: absolute;
+  color: #D4AF37;
+  font-size: 1.25rem;
+}
+
+.hero-inner-frame::before {
+  top: -0.75rem;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.hero-inner-frame::after {
+  bottom: -0.75rem;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.hero-corner {
+  position: absolute;
+  width: 60px;
+  height: 60px;
+  border-color: #D4AF37;
+}
+
+.hero-corner-tl {
+  top: 2rem;
+  left: 2rem;
+  border-top: 3px solid;
+  border-left: 3px solid;
+}
+
+.hero-corner-tr {
+  top: 2rem;
+  right: 2rem;
+  border-top: 3px solid;
+  border-right: 3px solid;
+}
+
+.hero-corner-bl {
+  bottom: 2rem;
+  left: 2rem;
+  border-bottom: 3px solid;
+  border-left: 3px solid;
+}
+
+.hero-corner-br {
+  bottom: 2rem;
+  right: 2rem;
+  border-bottom: 3px solid;
+  border-right: 3px solid;
+}
+
+/* ============================================
+   RESPONSIVE
+   ============================================ */
+
+@media (max-width: 768px) {
+  .product-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .hero-inner-frame {
+    inset: 1rem;
+  }
+
+  .hero-corner {
+    width: 40px;
+    height: 40px;
+  }
+
+  .hero-corner-tl,
+  .hero-corner-tr {
+    top: 1rem;
+  }
+
+  .hero-corner-bl,
+  .hero-corner-br {
+    bottom: 1rem;
+  }
+
+  .hero-corner-tl,
+  .hero-corner-bl {
+    left: 1rem;
+  }
+
+  .hero-corner-tr,
+  .hero-corner-br {
+    right: 1rem;
+  }
+}
+
+/* ============================================
+   EMBROIDERY INTERACTIVE EFFECTS
+   ============================================ */
+
+/* Animated Stitch Border */
+.stitch-border {
+  position: relative;
+  background: white;
+}
+
+.stitch-border::before {
+  content: '';
+  position: absolute;
+  inset: -2px;
+  background:
+    repeating-linear-gradient(0deg, transparent, transparent 8px, #D4AF37 8px, #D4AF37 10px, transparent 10px, transparent 18px),
+    repeating-linear-gradient(90deg, transparent, transparent 8px, #D4AF37 8px, #D4AF37 10px, transparent 10px, transparent 18px),
+    repeating-linear-gradient(180deg, transparent, transparent 8px, #D4AF37 8px, #D4AF37 10px, transparent 10px, transparent 18px),
+    repeating-linear-gradient(270deg, transparent, transparent 8px, #D4AF37 8px, #D4AF37 10px, transparent 10px, transparent 18px);
+  background-size: 2px 100%, 100% 2px, 2px 100%, 100% 2px;
+  background-position: 0 0, 0 0, 100% 0, 0 100%;
+  background-repeat: no-repeat;
+  z-index: -1;
+  animation: stitchMove 3s linear infinite;
+}
+
+@keyframes stitchMove {
+  0% {
+    background-position: 0 0, 0 0, 100% 0, 0 100%;
+  }
+
+  25% {
+    background-position: 0 10px, 10px 0, 100% 10px, 10px 100%;
+  }
+
+  50% {
+    background-position: 0 20px, 20px 0, 100% 20px, 20px 100%;
+  }
+
+  75% {
+    background-position: 0 10px, 10px 0, 100% 10px, 10px 100%;
+  }
+
+  100% {
+    background-position: 0 0, 0 0, 100% 0, 0 100%;
+  }
+}
+
+/* Running Stitch Animation */
+.running-stitch {
+  position: relative;
+  overflow: hidden;
+}
+
+.running-stitch::after {
+  content: '- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  white-space: nowrap;
+  color: #D4AF37;
+  font-size: 0.75rem;
+  letter-spacing: 2px;
+  animation: runningStitch 10s linear infinite;
+}
+
+@keyframes runningStitch {
+  0% {
+    transform: translateX(0);
+  }
+
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+/* Thread Trail Effect - Follows sections */
+.thread-trail {
+  position: relative;
+}
+
+.thread-trail::before {
+  content: '';
+  position: absolute;
+  left: 50%;
+  top: -40px;
+  width: 3px;
+  height: 40px;
+  background: linear-gradient(to bottom, transparent, #D4AF37);
+  transform: translateX(-50%);
+}
+
+.thread-trail::after {
+  content: '🪡';
+  position: absolute;
+  left: 50%;
+  top: -55px;
+  transform: translateX(-50%) rotate(-45deg);
+  font-size: 1.25rem;
+  animation: needleBob 2s ease-in-out infinite;
+}
+
+@keyframes needleBob {
+
+  0%,
+  100% {
+    transform: translateX(-50%) rotate(-45deg) translateY(0);
+  }
+
+  50% {
+    transform: translateX(-50%) rotate(-45deg) translateY(-5px);
+  }
+}
+
+/* Zari Shimmer Effect */
+.zari-shimmer {
+  position: relative;
+  overflow: hidden;
+}
+
+.zari-shimmer::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(45deg,
+      transparent 40%,
+      rgba(212, 175, 55, 0.1) 45%,
+      rgba(212, 175, 55, 0.3) 50%,
+      rgba(212, 175, 55, 0.1) 55%,
+      transparent 60%);
+  animation: zariShimmer 4s ease-in-out infinite;
+  pointer-events: none;
+}
+
+@keyframes zariShimmer {
+  0% {
+    transform: translateX(-100%) translateY(-100%) rotate(45deg);
+  }
+
+  100% {
+    transform: translateX(100%) translateY(100%) rotate(45deg);
+  }
+}
+
+/* Embroidery Hover Reveal */
+.embroidery-reveal {
+  position: relative;
+  overflow: hidden;
+}
+
+.embroidery-reveal::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at 20% 30%, rgba(212, 175, 55, 0) 0%, rgba(212, 175, 55, 0) 100%),
+    radial-gradient(circle at 80% 70%, rgba(139, 0, 0, 0) 0%, rgba(139, 0, 0, 0) 100%);
+  transition: all 0.5s ease;
+  pointer-events: none;
+}
+
+.embroidery-reveal:hover::before {
+  background:
+    radial-gradient(circle at 20% 30%, rgba(212, 175, 55, 0.15) 0%, transparent 50%),
+    radial-gradient(circle at 80% 70%, rgba(139, 0, 0, 0.1) 0%, transparent 50%);
+}
+
+/* Thread Texture Background */
+.thread-texture {
+  background-image:
+    url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 20 Q10 15, 20 20 T40 20' stroke='%23D4AF37' stroke-width='0.5' fill='none' opacity='0.2'/%3E%3Cpath d='M0 10 Q10 5, 20 10 T40 10' stroke='%23D4AF37' stroke-width='0.5' fill='none' opacity='0.15'/%3E%3Cpath d='M0 30 Q10 25, 20 30 T40 30' stroke='%23D4AF37' stroke-width='0.5' fill='none' opacity='0.15'/%3E%3C/svg%3E");
+}
+
+/* Animated Cross Stitch Pattern */
+.cross-stitch-bg {
+  position: relative;
+}
+
+.cross-stitch-bg::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  opacity: 0.03;
+  background-image: url("data:image/svg+xml,%3Csvg width='20' height='20' viewBox='0 0 20 20' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 0L10 10M10 0L0 10' stroke='%23D4AF37' stroke-width='1'/%3E%3C/svg%3E");
+  animation: crossStitchFade 5s ease-in-out infinite;
+  pointer-events: none;
+}
+
+@keyframes crossStitchFade {
+
+  0%,
+  100% {
+    opacity: 0.03;
+  }
+
+  50% {
+    opacity: 0.08;
+  }
+}
+
+/* Golden Thread Connection Lines */
+.thread-connect {
+  position: relative;
+}
+
+.thread-connect::before,
+.thread-connect::after {
+  content: '';
+  position: absolute;
+  width: 100px;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #D4AF37 30%, #D4AF37 70%, transparent);
+  top: 50%;
+}
+
+.thread-connect::before {
+  left: -120px;
+}
+
+.thread-connect::after {
+  right: -120px;
+}
+
+/* Needle Cursor on Interactive Elements */
+.needle-cursor {
+  cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'%3E%3Cpath fill='%23D4AF37' d='M7 2l1.5 10.5L19 22l-7.5-7.5z'/%3E%3Ccircle cx='5' cy='4' r='2' fill='%238B0000'/%3E%3C/svg%3E") 0 24, pointer;
+}
+
+/* Embroidery Card Stitch Effect */
+.embroidery-card {
+  position: relative;
+  background: white;
+  transition: all 0.4s ease;
+}
+
+.embroidery-card::before,
+.embroidery-card::after {
+  content: '';
+  position: absolute;
+  background: #D4AF37;
+  transition: all 0.4s ease;
+}
+
+/* Top and bottom stitch lines */
+.embroidery-card::before {
+  top: 0;
+  left: 10%;
+  right: 10%;
+  height: 3px;
+  background: repeating-linear-gradient(90deg, #D4AF37 0px, #D4AF37 8px, transparent 8px, transparent 12px);
+}
+
+.embroidery-card::after {
+  bottom: 0;
+  left: 10%;
+  right: 10%;
+  height: 3px;
+  background: repeating-linear-gradient(90deg, #D4AF37 0px, #D4AF37 8px, transparent 8px, transparent 12px);
+}
+
+.embroidery-card:hover::before,
+.embroidery-card:hover::after {
+  left: 0;
+  right: 0;
+  background: repeating-linear-gradient(90deg, #B8860B 0px, #B8860B 8px, transparent 8px, transparent 12px);
+}
+
+/* Gold Thread Wave Animation */
+.thread-wave {
+  position: relative;
+  overflow: hidden;
+}
+
+.thread-wave::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background:
+    repeating-linear-gradient(90deg,
+      transparent 0px,
+      #D4AF37 1px,
+      #D4AF37 3px,
+      transparent 4px,
+      transparent 8px);
+  animation: threadWave 2s ease-in-out infinite;
+}
+
+@keyframes threadWave {
+
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+
+  50% {
+    transform: translateX(8px);
+  }
+}
+
+/* Floating Embroidery Elements */
+.float-embroidery {
+  animation: floatEmbroidery 6s ease-in-out infinite;
+}
+
+@keyframes floatEmbroidery {
+
+  0%,
+  100% {
+    transform: translateY(0) rotate(0deg);
+  }
+
+  25% {
+    transform: translateY(-10px) rotate(2deg);
+  }
+
+  75% {
+    transform: translateY(10px) rotate(-2deg);
+  }
+}
+
+/* Interactive Stitch Button */
+.stitch-button {
+  position: relative;
+  padding: 1rem 2.5rem;
+  background: linear-gradient(135deg, #8B0000, #4A0404);
+  color: #E8D5A3;
+  border: none;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.stitch-button::before {
+  content: '';
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  right: 3px;
+  bottom: 3px;
+  border: 2px dashed rgba(212, 175, 55, 0.5);
+  transition: all 0.3s ease;
+}
+
+.stitch-button:hover::before {
+  border-color: #D4AF37;
+  animation: dashMove 1s linear infinite;
+}
+
+@keyframes dashMove {
+  0% {
+    border-style: dashed;
+  }
+
+  50% {
+    border-style: dotted;
+  }
+
+  100% {
+    border-style: dashed;
+  }
+}
+
+/* Sparkle effect on hover */
+.sparkle-hover {
+  position: relative;
+}
+
+.sparkle-hover::after {
+  content: '✨';
+  position: absolute;
+  top: -10px;
+  right: -10px;
+  font-size: 1.5rem;
+  opacity: 0;
+  transform: scale(0);
+  transition: all 0.3s ease;
+}
+
+.sparkle-hover:hover::after {
+  opacity: 1;
+  transform: scale(1);
+  animation: sparkleRotate 1s ease-in-out infinite;
+}
+
+@keyframes sparkleRotate {
+
+  0%,
+  100% {
+    transform: scale(1) rotate(0deg);
+  }
+
+  50% {
+    transform: scale(1.2) rotate(10deg);
+  }
+}
+
+/* Embroidery Pattern Reveal on Scroll */
+.pattern-reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.pattern-reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Animated Needle Icon */
+.animated-needle {
+  display: inline-block;
+  animation: needleSew 2s ease-in-out infinite;
+}
+
+@keyframes needleSew {
+
+  0%,
+  100% {
+    transform: translateX(0) rotate(0deg);
+  }
+
+  25% {
+    transform: translateX(5px) rotate(15deg);
+  }
+
+  50% {
+    transform: translateX(0) rotate(0deg);
+  }
+
+  75% {
+    transform: translateX(-5px) rotate(-15deg);
+  }
+}
+
+/* Thread Color Transition */
+.thread-color-shift {
+  background: linear-gradient(90deg, #D4AF37, #8B0000, #D4AF37);
+  background-size: 200% 100%;
+  animation: threadColorShift 4s ease-in-out infinite;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+@keyframes threadColorShift {
+
+  0%,
+  100% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+/* Fabric Texture Overlay */
+.fabric-texture {
+  position: relative;
+}
+
+.fabric-texture::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg width='4' height='4' viewBox='0 0 4 4' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 3h1v1H1V3zm2-2h1v1H3V1z' fill='%23000000' fill-opacity='0.02'/%3E%3C/svg%3E");
+  pointer-events: none;
+}
+
+/* Interactive Card Flip with Embroidery Back */
+.embroidery-flip-card {
+  perspective: 1000px;
+}
+
+.embroidery-flip-card-inner {
+  transition: transform 0.8s;
+  transform-style: preserve-3d;
+}
+
+.embroidery-flip-card:hover .embroidery-flip-card-inner {
+  transform: rotateY(10deg);
+}
+
+/* ============================================
+   SCROLL REVEAL ANIMATIONS
+   ============================================ */
+
+/* Fade In Up Animation */
+.fade-in-up {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+.fade-in-up.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Fade In Left */
+.fade-in-left {
+  opacity: 0;
+  transform: translateX(-40px);
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+.fade-in-left.visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* Fade In Right */
+.fade-in-right {
+  opacity: 0;
+  transform: translateX(40px);
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+.fade-in-right.visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* Scale In Animation */
+.scale-in {
+  opacity: 0;
+  transform: scale(0.9);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.scale-in.visible {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* Stagger Animation Delays */
+.stagger-1 {
+  transition-delay: 0.1s;
+}
+
+.stagger-2 {
+  transition-delay: 0.2s;
+}
+
+.stagger-3 {
+  transition-delay: 0.3s;
+}
+
+.stagger-4 {
+  transition-delay: 0.4s;
+}
+
+.stagger-5 {
+  transition-delay: 0.5s;
+}
+
+.stagger-6 {
+  transition-delay: 0.6s;
+}
+
+.stagger-7 {
+  transition-delay: 0.7s;
+}
+
+/* ============================================
+   ENHANCED PRODUCT CARD ANIMATIONS
+   ============================================ */
+
+.product-card {
+  opacity: 0;
+  transform: translateY(30px);
+  animation: cardFadeIn 0.6s ease-out forwards;
+}
+
+.product-card:nth-child(1) {
+  animation-delay: 0.1s;
+}
+
+.product-card:nth-child(2) {
+  animation-delay: 0.2s;
+}
+
+.product-card:nth-child(3) {
+  animation-delay: 0.3s;
+}
+
+.product-card:nth-child(4) {
+  animation-delay: 0.4s;
+}
+
+.product-card:nth-child(5) {
+  animation-delay: 0.5s;
+}
+
+.product-card:nth-child(6) {
+  animation-delay: 0.6s;
+}
+
+.product-card:nth-child(7) {
+  animation-delay: 0.7s;
+}
+
+@keyframes cardFadeIn {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Enhanced Image Hover Effects */
+.product-card .relative img {
+  transition: transform 0.7s cubic-bezier(0.4, 0, 0.2, 1), filter 0.4s ease;
+}
+
+.product-card:hover .relative img {
+  filter: brightness(1.05) saturate(1.1);
+}
+
+/* Gold Shimmer Effect on Cards */
+.product-card::before {
+  background: linear-gradient(135deg,
+      transparent 0%,
+      rgba(212, 175, 55, 0.1) 50%,
+      transparent 100%);
+  background-size: 200% 200%;
+}
+
+.product-card:hover::before {
+  animation: shimmer 1.5s ease-in-out;
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% -200%;
+  }
+
+  100% {
+    background-position: 200% 200%;
+  }
+}
+
+/* ============================================
+   GALLERY ENHANCED ANIMATIONS
+   ============================================ */
+
+.gallery-item {
+  opacity: 0;
+  transform: scale(0.95);
+  animation: galleryFadeIn 0.5s ease-out forwards;
+}
+
+.gallery-item:nth-child(1) {
+  animation-delay: 0.05s;
+}
+
+.gallery-item:nth-child(2) {
+  animation-delay: 0.1s;
+}
+
+.gallery-item:nth-child(3) {
+  animation-delay: 0.15s;
+}
+
+.gallery-item:nth-child(4) {
+  animation-delay: 0.2s;
+}
+
+.gallery-item:nth-child(5) {
+  animation-delay: 0.25s;
+}
+
+.gallery-item:nth-child(6) {
+  animation-delay: 0.3s;
+}
+
+.gallery-item:nth-child(7) {
+  animation-delay: 0.35s;
+}
+
+.gallery-item:nth-child(8) {
+  animation-delay: 0.4s;
+}
+
+@keyframes galleryFadeIn {
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Gallery Hover Glow Effect */
+.gallery-item::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border: 3px solid transparent;
+  border-radius: 8px;
+  transition: all 0.4s ease;
+}
+
+.gallery-item:hover::after {
+  border-color: #D4AF37;
+  box-shadow: 0 0 30px rgba(212, 175, 55, 0.4);
+}
+
+/* ============================================
+   TRUST BADGE ANIMATIONS
+   ============================================ */
+
+.trust-badge {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: trustBadgeFadeIn 0.6s ease-out forwards;
+}
+
+.trust-badge:nth-child(1) {
+  animation-delay: 0.1s;
+}
+
+.trust-badge:nth-child(2) {
+  animation-delay: 0.2s;
+}
+
+.trust-badge:nth-child(3) {
+  animation-delay: 0.3s;
+}
+
+.trust-badge:nth-child(4) {
+  animation-delay: 0.4s;
+}
+
+@keyframes trustBadgeFadeIn {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.trust-badge:hover .trust-badge-icon {
+  transform: scale(1.1) rotate(5deg);
+  box-shadow: 0 8px 30px rgba(212, 175, 55, 0.6);
+}
+
+.trust-badge-icon {
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ============================================
+   SECTION ENTRANCE ANIMATIONS
+   ============================================ */
+
+section {
+  opacity: 1;
+}
+
+/* Hero Text Animation */
+.hero-section h1 {
+  animation: heroTitleFade 1.2s ease-out;
+}
+
+@keyframes heroTitleFade {
+  0% {
+    opacity: 0;
+    transform: translateY(30px);
+    filter: blur(10px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0);
+  }
+}
+
+.hero-section p {
+  animation: heroSubtitleFade 1.2s ease-out 0.3s backwards;
+}
+
+@keyframes heroSubtitleFade {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* CTA Button Bounce */
+.hero-section .btn-gold {
+  animation: ctaButtonPop 0.6s ease-out 0.8s backwards;
+}
+
+@keyframes ctaButtonPop {
+  0% {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+
+  50% {
+    transform: scale(1.05);
+  }
+
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* ============================================
+   SMOOTH PAGE TRANSITIONS
+   ============================================ */
+
+main {
+  animation: pageEnter 0.4s ease-out;
+}
+
+@keyframes pageEnter {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+/* ============================================
+   BACK TO TOP BUTTON
+   ============================================ */
+
+.back-to-top {
+  position: fixed;
+  bottom: 100px;
+  right: 2rem;
+  width: 50px;
+  height: 50px;
+  background: linear-gradient(135deg, #8B0000, #4A0404);
+  border: 2px solid #D4AF37;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #D4AF37;
+  font-size: 1.5rem;
+  cursor: pointer;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(20px);
+  transition: all 0.3s ease;
+  z-index: 999;
+  text-decoration: none;
+}
+
+.back-to-top.visible {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.back-to-top:hover {
+  background: linear-gradient(135deg, #D4AF37, #B8860B);
+  color: #4A0404;
+  transform: translateY(-5px);
+  box-shadow: 0 8px 25px rgba(212, 175, 55, 0.5);
+}
+
+/* ============================================
+   NAVBAR SCROLL EFFECT
+   ============================================ */
+
+.navbar-scrolled {
+  background: rgba(74, 4, 4, 0.98) !important;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+/* ============================================
+   LOADING SKELETON
+   ============================================ */
+
+.skeleton {
+  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+  background-size: 200% 100%;
+  animation: skeletonLoading 1.5s infinite;
+  border-radius: 4px;
+}
+
+@keyframes skeletonLoading {
+  0% {
+    background-position: 200% 0;
+  }
+
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+/* ============================================
+   COUNTER ANIMATION
+   ============================================ */
+
+.counter-animate {
+  display: inline-block;
+  animation: counterPop 0.5s ease-out;
+}
+
+@keyframes counterPop {
+  0% {
+    transform: scale(0.5);
+    opacity: 0;
+  }
+
+  50% {
+    transform: scale(1.2);
+  }
+
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+/* ============================================
+   LIGHTBOX ANIMATION
+   ============================================ */
+
+.animate-fadeIn {
+  animation: fadeIn 0.2s ease-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
 }
