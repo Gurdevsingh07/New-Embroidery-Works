@@ -91,58 +91,93 @@ export default function HomePage() {
                     <div className="w-px h-32 bg-gradient-to-b from-transparent via-gold/50 to-transparent"></div>
                 </div>
 
-                {/* Hero Content */}
-                <div className="relative z-20 text-center px-4 py-8 max-w-4xl mx-auto">
-                    {/* Main Title with reduced sizing */}
-                    <h1 className="font-heading text-5xl md:text-6xl lg:text-7xl font-bold mb-4 leading-tight">
-                        <span className="text-gold drop-shadow-[0_4px_20px_rgba(212,175,55,0.3)]">New Embroidery</span>
-                        <br />
-                        <span className="text-gold-light italic">Works</span>
-                    </h1>
+                {/* Hero Content with Glass Bubble Effect */}
+                <div className="relative z-20 text-center px-4 pt-16 max-w-4xl mx-auto flex flex-col items-center justify-center min-h-screen">
+                    {/* Glass Bubble Container */}
+                    <div className="relative px-12 py-20 md:px-24 md:py-24 rounded-3xl backdrop-blur-sm border border-gold/10 shadow-2xl shadow-black/20"
+                        style={{
+                            background: 'linear-gradient(135deg, rgba(74, 4, 4, 0.15) 0%, rgba(139, 0, 0, 0.12) 50%, rgba(74, 4, 4, 0.15) 100%)',
+                            boxShadow: '0 8px 32px rgba(0, 0, 0, 0.15), inset 0 0 60px rgba(212, 175, 55, 0.02), 0 0 40px rgba(212, 175, 55, 0.03)'
+                        }}
+                    >
+                        {/* Golden Climber Borders - Top Left Corner */}
+                        <div className="absolute top-0 left-0">
+                            <div className="absolute top-0 left-6 w-24 md:w-32 h-0.5 bg-gradient-to-r from-gold/60 to-transparent"></div>
+                            <div className="absolute top-6 left-0 h-24 md:h-32 w-0.5 bg-gradient-to-b from-gold/60 to-transparent"></div>
+                            <div className="absolute top-0 left-0 text-gold/80 text-2xl">✿</div>
+                        </div>
 
-                    {/* Est. 1968 divider */}
-                    <div className="flex items-center justify-center gap-4 mb-5">
-                        <span className="w-16 h-px bg-gradient-to-r from-transparent to-gold/60"></span>
-                        <span className="text-gold/90 text-sm tracking-[0.4em] uppercase font-semibold">Est. 1968</span>
-                        <span className="w-16 h-px bg-gradient-to-l from-transparent to-gold/60"></span>
+                        {/* Golden Climber Borders - Top Right Corner */}
+                        <div className="absolute top-0 right-0">
+                            <div className="absolute top-0 right-6 w-24 md:w-32 h-0.5 bg-gradient-to-l from-gold/60 to-transparent"></div>
+                            <div className="absolute top-6 right-0 h-24 md:h-32 w-0.5 bg-gradient-to-b from-gold/60 to-transparent"></div>
+                            <div className="absolute top-0 right-0 text-gold/80 text-2xl">✿</div>
+                        </div>
+
+                        {/* Golden Climber Borders - Bottom Left Corner */}
+                        <div className="absolute bottom-0 left-0">
+                            <div className="absolute bottom-0 left-6 w-24 md:w-32 h-0.5 bg-gradient-to-r from-gold/60 to-transparent"></div>
+                            <div className="absolute bottom-6 left-0 h-24 md:h-32 w-0.5 bg-gradient-to-t from-gold/60 to-transparent"></div>
+                            <div className="absolute bottom-0 left-0 text-gold/80 text-2xl">✿</div>
+                        </div>
+
+                        {/* Golden Climber Borders - Bottom Right Corner */}
+                        <div className="absolute bottom-0 right-0">
+                            <div className="absolute bottom-0 right-6 w-24 md:w-32 h-0.5 bg-gradient-to-l from-gold/60 to-transparent"></div>
+                            <div className="absolute bottom-6 right-0 h-24 md:h-32 w-0.5 bg-gradient-to-t from-gold/60 to-transparent"></div>
+                            <div className="absolute bottom-0 right-0 text-gold/80 text-2xl">✿</div>
+                        </div>
+                        {/* Main Title */}
+                        <h1 className="font-heading text-5xl md:text-6xl lg:text-7xl font-bold mb-4 leading-tight">
+                            <span className="text-gold drop-shadow-[0_4px_20px_rgba(212,175,55,0.3)]">New Embroidery</span>
+                            <br />
+                            <span className="text-gold-light italic">Works</span>
+                        </h1>
+
+                        {/* Est. 1968 divider */}
+                        <div className="flex items-center justify-center gap-4 mb-5">
+                            <span className="w-16 h-px bg-gradient-to-r from-transparent to-gold/60"></span>
+                            <span className="text-gold/90 text-sm tracking-[0.4em] uppercase font-semibold">Est. 1968</span>
+                            <span className="w-16 h-px bg-gradient-to-l from-transparent to-gold/60"></span>
+                        </div>
+
+                        {/* Tagline */}
+                        <p className="text-gold-light text-xl md:text-2xl mb-3 mt-6 font-light tracking-wide">
+                            Traditional Devta & Bridal Embroidery
+                        </p>
+                        <p className="text-gold-light/80 text-base md:text-lg mb-10 tracking-wider">
+                            Mandi, Himachal Pradesh
+                        </p>
+
+                        {/* CTA Buttons */}
+                        <div className="flex flex-wrap justify-center items-center gap-2 mb-2">
+                            <a
+                                href="tel:+919418495028"
+                                className="group relative px-8 py-3 bg-transparent border-2 border-gold text-gold font-heading uppercase tracking-wider text-sm hover:bg-gold hover:text-maroon-dark transition-all duration-300"
+                            >
+                                <span className="relative z-10">Call Us</span>
+                                <span className="absolute inset-0 bg-gold/10 opacity-0 group-hover:opacity-100 transition-opacity"></span>
+                            </a>
+                            <Link
+                                href="/gallery"
+                                className="group relative px-8 py-3 bg-gold text-maroon-dark font-heading uppercase tracking-wider text-sm hover:bg-gold-light transition-all duration-300 shadow-lg shadow-gold/30"
+                            >
+                                <span className="relative z-10">View Gallery</span>
+                            </Link>
+                            <a
+                                href="https://wa.me/919418495028"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="group relative px-8 py-3 bg-transparent border-2 border-gold text-gold font-heading uppercase tracking-wider text-sm hover:bg-gold hover:text-maroon-dark transition-all duration-300"
+                            >
+                                <span className="relative z-10">WhatsApp</span>
+                                <span className="absolute inset-0 bg-gold/10 opacity-0 group-hover:opacity-100 transition-opacity"></span>
+                            </a>
+                        </div>
                     </div>
 
-                    {/* Tagline - larger and clearer */}
-                    <p className="text-gold-light text-xl md:text-2xl mb-3 mt-6 font-light tracking-wide">
-                        Traditional Devta & Bridal Embroidery
-                    </p>
-                    <p className="text-gold-light/80 text-base md:text-lg mb-10 tracking-wider">
-                        Mandi, Himachal Pradesh
-                    </p>
-
-                    {/* CTA Buttons - Heritage Style */}
-                    <div className="flex flex-wrap justify-center items-center gap-2 mb-6">
-                        <a
-                            href="tel:+919418495028"
-                            className="group relative px-8 py-3 bg-transparent border-2 border-gold text-gold font-heading uppercase tracking-wider text-sm hover:bg-gold hover:text-maroon-dark transition-all duration-300"
-                        >
-                            <span className="relative z-10">Call Us</span>
-                            <span className="absolute inset-0 bg-gold/10 opacity-0 group-hover:opacity-100 transition-opacity"></span>
-                        </a>
-                        <a
-                            href="https://wa.me/919418495028"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="group relative px-8 py-3 bg-gold text-maroon-dark font-heading uppercase tracking-wider text-sm hover:bg-gold-light transition-all duration-300 shadow-lg shadow-gold/30"
-                        >
-                            <span className="relative z-10">WhatsApp</span>
-                        </a>
-                        <Link
-                            href="/gallery"
-                            className="group relative px-8 py-3 bg-transparent border-2 border-gold text-gold font-heading uppercase tracking-wider text-sm hover:bg-gold hover:text-maroon-dark transition-all duration-300"
-                        >
-                            <span className="relative z-10">View Gallery</span>
-                            <span className="absolute inset-0 bg-gold/10 opacity-0 group-hover:opacity-100 transition-opacity"></span>
-                        </Link>
-                    </div>
-
-                    {/* Scroll Indicator - reduced spacing */}
-                    <div className="mt-8 animate-bounce">
+                    {/* Scroll Indicator - outside the bubble */}
+                    <div className="mt-24 animate-bounce">
                         <span className="text-gold/60 text-xs tracking-[0.2em] uppercase block mb-1">Scroll to Explore</span>
                         <span className="text-gold/80 text-lg">↓</span>
                     </div>

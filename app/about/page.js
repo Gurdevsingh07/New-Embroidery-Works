@@ -65,11 +65,58 @@ export default function About() {
                 </div>
             </section>
 
-            {/* Owner Section */}
+            {/* Founder - Late Sh. Niranjan Singh ji */}
+            <section className="py-20 bg-ivory">
+                <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div className="text-center mb-12">
+                        <p className="text-gold uppercase tracking-[0.3em] text-sm mb-2">In Loving Memory</p>
+                        <h2 className="font-heading text-maroon text-3xl sm:text-4xl font-bold mb-4">
+                            The Visionary Who Started It All
+                        </h2>
+                        <div className="decorative-divider max-w-md mx-auto">
+                            <span>✦</span>
+                        </div>
+                    </div>
+
+                    <div className="flex flex-col md:flex-row-reverse items-center gap-10">
+                        {/* Founder Photo */}
+                        <div className="relative w-64 h-80 gold-border-frame rounded-lg overflow-hidden shadow-xl flex-shrink-0">
+                            <Image
+                                src="/founder-niranjan-singh.jpg"
+                                alt="Late Sh. Niranjan Singh ji - Founder of New Embroidery Works"
+                                fill
+                                className="object-cover object-top"
+                            />
+                        </div>
+
+                        {/* Founder Info */}
+                        <div className="text-center md:text-right">
+                            <h3 className="font-heading text-maroon text-3xl font-bold mb-2">
+                                Late Sh. Niranjan Singh ji
+                            </h3>
+                            <p className="text-gold font-semibold uppercase tracking-wider text-sm mb-4">
+                                Founder & Visionary (Est. 1968)
+                            </p>
+                            <p className="text-text-light leading-relaxed mb-4">
+                                <strong>Late Sh. Niranjan Singh ji</strong> laid the foundation of New Embroidery Works
+                                in 1968. He was an ultimate craftsman with extraordinary skills and an unwavering
+                                dedication to the art of traditional embroidery.
+                            </p>
+                            <p className="text-text-light leading-relaxed">
+                                It all started from him — his vision, his craftsmanship, and his devotion to preserving
+                                the sacred traditions of Himachali embroidery. His legacy continues to inspire every
+                                piece we create today.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            {/* Owner Section - Mr. Gurdit Singh */}
             <section className="py-20 bg-cream-texture">
                 <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
                     <div className="text-center mb-12">
-                        <p className="text-gold uppercase tracking-[0.3em] text-sm mb-2">Meet The Founder</p>
+                        <p className="text-gold uppercase tracking-[0.3em] text-sm mb-2">Carrying Forward The Legacy</p>
                         <h2 className="font-heading text-maroon text-3xl sm:text-4xl font-bold mb-4">
                             The Heart Behind Our Craft
                         </h2>
@@ -83,7 +130,7 @@ export default function About() {
                         <div className="relative w-64 h-80 gold-border-frame rounded-lg overflow-hidden shadow-xl flex-shrink-0">
                             <Image
                                 src="/owner-gurdit-singh.jpg"
-                                alt="Gurdit Singh - Owner of New Embroidery Works"
+                                alt="Mr. Gurdit Singh - Owner of New Embroidery Works"
                                 fill
                                 className="object-cover object-top"
                             />
@@ -95,12 +142,12 @@ export default function About() {
                                 Mr. Gurdit Singh
                             </h3>
                             <p className="text-gold font-semibold uppercase tracking-wider text-sm mb-4">
-                                Founder & Master Craftsman
+                                Owner & Master Craftsman
                             </p>
                             <p className="text-text-light leading-relaxed mb-4">
-                                With a passion for preserving the rich traditions of Himachali embroidery,
-                                <strong> Gurdit Singh</strong> has dedicated his life to mastering and passing on
-                                the sacred art of temple and bridal embroidery.
+                                Carrying forward his father&apos;s legacy, <strong>Mr. Gurdit Singh</strong> has
+                                dedicated his life to mastering and passing on the sacred art of temple and
+                                bridal embroidery.
                             </p>
                             <p className="text-text-light leading-relaxed">
                                 Under his guidance, New Embroidery Works has grown from a humble family
